@@ -1,22 +1,26 @@
-package Èí¼ş¹¹ÔìÊµÑéÒ»;
+package è½¯ä»¶æ„é€ å®éªŒä¸€;
+
+/*project2æ˜¯å°†project1åˆ†è§£æ¨¡å—åŒ–*/
+
+
 import java.util.Random;
-public class project2 {            //project2ÊÇ½«project1·Ö½âÄ£¿é»¯
+public class project2 {            
 	public static void main(String[] args) {
 		short[] x = new short[50];  
 		short[] y = new short[50];	 
-		short[] ov = new short[50];                                        //ÓÃÓÚ¹æ¶¨Éú³É50µÀËãÊ½
-		printHeader();                                                     //¼òµ¥ËµÃ÷±¾±¾³ÌĞòµÄ×÷ÓÃ
-		generateEquations(x,y,ov);                                         //²úÉú¼Ó·¨»ò¼õ·¨ËãÊ½²¢°´ÕÕÒªÇó´òÓ¡Êä³ö
-		printCalculations(x,y,ov);                                         //²úÉúËãÊ½½á¹û²¢°´ÕÕÒªÇó´òÓ¡Êä³ö
+		short[] ov = new short[50];                               //æ–°å»ºä¸‰ä¸ªå­˜æ”¾ç®—å¼ç¬¦å·ä¸²çš„æ•°ç»„
+		printHeader();                                            //ç®€å•è¯´æ˜æœ¬æœ¬ç¨‹åºçš„ä½œç”¨
+		generateEquations(x,y,ov);                                //äº§ç”ŸåŠ æ³•æˆ–å‡æ³•ç®—å¼å¹¶å­˜å…¥æ•°ç»„x[i],y[i],ov[i]
+		printExercise(x,y,ov);                                    //æŒ‰ç…§è¦æ±‚æ‰“å°è¾“å‡ºç®—å¼
+		printCalculations(x,y,ov);                                //è®¡ç®—ç®—å¼ç»“æœå¹¶æŒ‰ç…§è¦æ±‚æ‰“å°è¾“å‡º
 	}
 	public static void printHeader() {
 		System.out.println("-----------------------------------------");
-		System.out.println("-³ÌĞòÊä³ö50µÀ100ÒÔÄÚµÄ¼Ó¼õ·¨ËãÊ½Ï°Ìâ-");
-		System.out.println("-Ã¿´ÎÔËĞĞ³ÌĞò¿ÉµÃµ½Ò»Ì×50µÀÌâµÄÏ°Ìâ´ğ°¸-");
+		System.out.println("-æœ¬ç¨‹åºè¾“å‡º50é“100ä»¥å†…çš„åŠ å‡æ³•ç®—å¼-");
+		System.out.println("-æ¯æ¬¡è¿è¡Œç¨‹åºå¯å¾—åˆ°ä¸€å¥—50é“é¢˜çš„ç®—å¼çš„ç­”æ¡ˆ-");
 		System.out.println("-----------------------------------------");
 	}
 	public static void generateEquations(short[] x,short[] y,short[] ov) {
-		char o='+';
 		Random random=new Random();
 		for(int i=0;i<50;i++) {
 			ov[i]=(short)random.nextInt(2);
@@ -27,10 +31,10 @@ public class project2 {            //project2ÊÇ½«project1·Ö½âÄ£¿é»¯
 					if(index1+index2<=100) {
 						x[i]=index1;
 						y[i]=index2;
-						break;                                              //¹æ¶¨ËãÊ½µÄºÍ²»ÄÜ³¬¹ıÒ»°Ù
+						break;                                              //è§„å®šç®—å¼çš„å’Œä¸èƒ½è¶…è¿‡ä¸€ç™¾
 					}	
 				}
-				o='+';
+			
 			}
 			else {
 				while(true){
@@ -39,10 +43,9 @@ public class project2 {            //project2ÊÇ½«project1·Ö½âÄ£¿é»¯
 					if(index1-index2>0) {
 						x[i]=index1;
 						y[i]=index2;
-						break;                                             //¹æ¶¨ËãÊ½µÄ²î²»ÄÜĞ¡ÓÚÁã
+						break;                                             //è§„å®šç®—å¼çš„å·®ä¸èƒ½å°äºé›¶
 					}	
-				}
-				o='-';
+				}	
 			}
 			for(int m=0;m<49;m++) {
 				for(int n=m+1;n<50;n++) {
@@ -54,21 +57,28 @@ public class project2 {            //project2ÊÇ½«project1·Ö½âÄ£¿é»¯
 						break;
 					}
 				}	
-			}                                                             //ÅĞ¶ÏËãÊ½ÊÇ·ñÖØ¸´
-			System.out.print("("+(i+1)+")"+":  "+x[i]+o+y[i]+"="+"\t");
-			if((i+1)%5==0)
-				System.out.println();
+			}                                                                //åˆ¤æ–­ç”Ÿæˆç®—å¼æ˜¯å¦é‡å¤
 		}
-	}
-	                                                                     //°´ÕÕÒªÇó´òÓ¡Êä³öËãÊ½	
-	
+	}                                 
+   public static void printExercise(short[] x,short[] y,short[] ov) {
+	for(int i=0;i<50;i++) {
+		if(ov[i]==1) {
+			System.out.print("("+(i+1)+")"+":  "+x[i]+'+'+y[i]+"="+"\t");
+		}
+		else {
+			System.out.print("("+(i+1)+")"+":  "+x[i]+'-'+y[i]+"="+"\t");
+		}
+		if((i+1)%5==0)
+			System.out.println();
+	   }
+   }                                                                       //å°†ç”Ÿæˆçš„ç®—å¼æŒ‰ç…§ä¸€å®šçš„è¦æ±‚æ‰“å°è¾“å‡º
 	
 	
 	
 	
 	public static void printCalculations(short[] x,short[] y,short[] ov) {
 		System.out.println("-----------------------------------------");
-		System.out.println("-ÏÂÃæÊÇÏ°ÌâµÄ²Î¿¼´ğ°¸-");
+		System.out.println("-ä¸‹é¢æ˜¯ç®—å¼çš„å‚è€ƒç­”æ¡ˆ-");
 		System.out.println("-----------------------------------------");
 		for(int i=0;i<50;i++) {
 			if(ov[i]==1) {
@@ -82,10 +92,12 @@ public class project2 {            //project2ÊÇ½«project1·Ö½âÄ£¿é»¯
 				int answer=x[i]-y[i];
 				System.out.print("("+(i+1)+")"+":   "+answer+"\t");
 				if((i+1)%5==0) {
-					System.out.println();                                //°´ÕÕÒªÇó´òÓ¡Êä³öËãÊ½µÄ´ğ°¸
+					System.out.println();                                //æŒ‰ç…§è¦æ±‚æ‰“å°è¾“å‡ºç®—å¼çš„ç­”æ¡ˆ
 				}	
 			}
 		}
 	}
 }
+
+
 
